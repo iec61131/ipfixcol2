@@ -1,7 +1,8 @@
 version: "3"
 services:
   ipfixcol2:
+    tty: true
     build: .
     ports:
-      - "2055:2055/udp"
+      - "4739:4739/udp"
     entrypoint: /usr/local/bin/ipfixcol2 -v -c /etc/ipfixcol2.xml

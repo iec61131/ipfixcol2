@@ -9,8 +9,8 @@
       <name>UDP collector</name>
       <plugin>udp</plugin>
       <params>
-        <!-- List on port 2055 -->
-        <localPort>2055</localPort>
+        <!-- List on port 4739 -->
+        <localPort>4739</localPort>
         <!-- Bind to all local adresses -->
         <localIPAddress></localIPAddress>
       </params>
@@ -20,24 +20,23 @@
   <!-- Output plugins -->
   <outputPlugins>
     <output>
-      <name>JSON output</name>
-      <plugin>json</plugin>
-      <params>
-        <!-- JSON format paramters -->
-        <tcpFlags>formatted</tcpFlags>
-        <timestamp>formatted</timestamp>
-        <protocol>formatted</protocol>
-        <ignoreUnknown>false</ignoreUnknown>
-        <ignoreOptions>true</ignoreOptions>
-        <nonPrintableChar>true</nonPrintableChar>
-
-        <!-- Output methods -->
-        <outputs>
-            <print>
-                <name>Printer to standard output</name>
-            </print>
-        </outputs>
-      </params>
+        <name>Viewer output</name>
+        <plugin>viewer</plugin>
+        <params/>
+    </output>
+    <output>
+        <name>IPFIX output</name>
+        <plugin>ipfix</plugin>
+        <params>
+            <filename>/tmp/ipfix/%Y%m%d%H%M%S.ipfix</filename>
+            <useLocalTime>false</useLocalTime>
+            <windowSize>300</windowSize>
+            <alignWindows>true</alignWindows>
+            <preserveOriginal>false</preserveOriginal>
+            <rotateOnExportTime>false</rotateOnExportTime>
+        </params>
     </output>
   </outputPlugins>
+
+  
 </ipfixcol2>
